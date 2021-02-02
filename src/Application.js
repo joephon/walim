@@ -42,6 +42,7 @@ module.exports.Application = class Application {
 
   render(item) {
     this.setCurrentRoute(item)
+    document.title = item.title
     document.body.appendChild(item.node)
   }
 }

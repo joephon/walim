@@ -10,7 +10,7 @@ exports.Page = class Page extends HTMLElement {
   }
 
   setTitle(title) {
-    document.title = title | 'Walim App'
+    document.title = title || 'Walim App'
   }
 
   render() {
