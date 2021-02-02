@@ -9,18 +9,18 @@ module.exports.Application = class Application {
   }
 
   createInstance() {
-    // this.initRoutes()
+    this.initRoutes()
     this.listen()
     Application.instance = this
   }
 
-  // initRoutes() {
-  //   this.routes = this.routes.map((item, index) => {
-  //     item.index = index
-  //     item.node = new item.page({ title: item.title })
-  //     return item
-  //   })
-  // }
+  initRoutes() {
+    this.routes = this.routes.map((item, index) => {
+      item.index = index
+      item.node = new item.page({ title: item.title })
+      return item
+    })
+  }
 
   listen() {
     this.unlisten = this.history.listen(({ location, action }) => {
@@ -35,13 +35,13 @@ module.exports.Application = class Application {
 
   setCurrentRoute(route) {
     if (this.currentRoute) {
-      document.body.removeChild(this.currentRoute.page)
+      document.body.removeChild(this.currentRoute.node)
     }
     this.currentRoute = route
   }
 
   render(item) {
     this.setCurrentRoute(item)
-    document.body.appendChild(item.page)
+    document.body.appendChild(item.node)
   }
 }
