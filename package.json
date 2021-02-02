@@ -1,0 +1,32 @@
+{
+  "name": "walim",
+  "version": "0.0.1",
+  "description": "simple frontend framework that base on web component",
+  "main": "index.js",
+  "bin": {
+    "walim": "./bin/main.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joephon/walim.git"
+  },
+  "keywords": [
+    "walim",
+    "web",
+    "js",
+    "web-component"
+  ],
+  "author": "Joephon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joephon/walim/issues"
+  },
+  "homepage": "https://github.com/joephon/walim#readme",
+  "dependencies": {
+    "history": "^5.0.0",
+    "shelljs": "^0.8.4"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/about/index"
+  ],
+  "components": [
+    "components/test/index"
+  ]
+}
