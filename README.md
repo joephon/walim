@@ -15,7 +15,7 @@ Easy and simple web framework which base on web component standard
 - <del>Base Component</del>
 - <del>Base Router</del>
 - <del>Simple cli</del>
-- Layout Components
+- Layout Component
 - Form Component
 - List Component
 - Table Component
@@ -24,6 +24,7 @@ Easy and simple web framework which base on web component standard
 - Card Component
 - Modal Component
 - Nav Component
+- Tabs Component
 
 ### Useage
 

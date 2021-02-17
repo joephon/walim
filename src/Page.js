@@ -6,7 +6,13 @@ exports.Page = class Page extends HTMLElement {
   }
 
   mount() {
-    this.innerHTML = this.render()
+    const rendered = this.render()
+
+    if (typeof rendered === 'string') {
+      this.innerHTML = rendered
+    } else if (rendered instanceof HTMLElement) {
+      this.appendChild(rendered)
+    }
   }
 
   setTitle(title) {
