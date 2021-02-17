@@ -6,12 +6,13 @@ exports.Page = class Page extends HTMLElement {
   }
 
   mount() {
+    const shadowRoot = this.attachShadow({ mode: 'open' })
     const rendered = this.render()
 
     if (typeof rendered === 'string') {
-      this.innerHTML = rendered
+      shadowRoot.innerHTML = rendered
     } else if (rendered instanceof HTMLElement) {
-      this.appendChild(rendered)
+      shadowRoot.appendChild(rendered)
     }
   }
 
