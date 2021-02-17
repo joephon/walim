@@ -1,36 +1,42 @@
-module.exports.Application = class Application {
-  constructor({ routes = [], history = null }) {
+class Application {
+  constructor() {
     if (this.instance) {
       return this.instance
     }
-    this.routes = routes
-    this.history = history
+
     this.createInstance()
   }
 
   createInstance() {
-    this.initRoutes()
-    this.listen()
     Application.instance = this
   }
 
-  initRoutes() {
-    this.routes = this.routes.map((item, index) => {
+  config({ routes = [], history = null }) {
+    this.history = history
+    this.routes = routes.map((item, index) => {
       item.index = index
       item.node = new item.page({ title: item.title })
       return item
     })
+
+    return this
   }
 
-  listen() {
-    this.unlisten = this.history.listen(({ location, action }) => {
+  run() {
+    if (!this.routes || !this.history) {
+      throw 'Invoke app.config first!'
+    }
+
+    this.down = this.history.listen(({ location, action }) => {
       this.routes.forEach((item) => {
         if (location.pathname === item.pathname) {
           this.render(item)
         }
       })
     })
+
     this.history.push(this.history.location.pathname)
+    return this
   }
 
   setCurrentRoute(route) {
@@ -46,3 +52,6 @@ module.exports.Application = class Application {
     document.body.appendChild(item.node)
   }
 }
+
+module.exports.Application = Application
+module.exports.app = new Application()

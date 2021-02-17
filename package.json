@@ -1,6 +1,6 @@
 {
   "name": "walim",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "simple frontend framework that base on web component",
   "main": "index.js",
   "bin": {
