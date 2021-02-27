@@ -103,10 +103,8 @@ function initApplication(rootDir) {
   const data = [
     `import history from 'history/hash'`,
     `import { app } from 'walim'`,
-    `import routes from './routes'\n`,
-    `app
-      .config({ routes, history })
-      .run()`,
+    `import routes from './routes'`,
+    `app.config({ routes, history }).run()`,
   ].join('\n')
   fs.writeFileSync(filePath, data)
 
