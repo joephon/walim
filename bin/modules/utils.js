@@ -30,11 +30,13 @@ module.exports.getNames = (name) => {
   }
 
   let formatName = temp.join('').replace(/ /g, '_')
-  let fileName = formatName.slice(1, formatName.length)
+  let fileName = formatName.charAt(0) === '_'
+    ? formatName.slice(1, formatName.length)
+    : formatName
 
-  className = formatName.split('_').map(item => {
+  let className = formatName.split('_').map(item => {
     item = item.charAt(0).toUpperCase() + item.slice(1, item.length)
     return item
   }).join('')
-  return {rawName, formatName, className, fileName, dirName: fileName}
+  return { rawName, formatName, className, fileName, dirName: fileName }
 }

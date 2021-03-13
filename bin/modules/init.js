@@ -59,7 +59,9 @@ function initComponents(rootDir) {
 }
 
 function initConfig(rootDir) {
-  const projectConfig = JSON.stringify(require('../config/project.json'), null, 2) + os.EOL
+  const projectObj = require('../config/project.json')
+  projectObj.rootDir = `${process.cwd()}/${rootDir}`
+  const projectConfig = JSON.stringify(projectObj, null, 2) + os.EOL
   fs.writeFileSync(`${rootDir}/project.json`, projectConfig)
 
   const packageConfig = JSON.stringify(require('../config/package.json'), null, 2) + os.EOL
