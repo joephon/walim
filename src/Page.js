@@ -1,18 +1,35 @@
 exports.Page = class Page extends HTMLElement {
   constructor(props = {}) {
     super(props)
+    this._state = {}
     this.mount()
     this.setTitle(props.title)
   }
 
+  get state() {
+    return this._state
+  }
+
+  set state(obj) {
+    this._state = { ...this._state, ...obj }
+  }
+
+  setState(obj) {
+    this._state = { ...this._state, ...obj }
+    this.mount()
+  }
+
   mount() {
-    const shadowRoot = this.attachShadow({ mode: 'open' })
+    if (!this.shadowRoot) {
+      this.attachShadow({ mode: 'open' })
+    }
+
     const rendered = this.render()
 
     if (typeof rendered === 'string') {
-      shadowRoot.innerHTML = rendered
+      this.shadowRoot.innerHTML = rendered
     } else if (rendered instanceof HTMLElement) {
-      shadowRoot.appendChild(rendered)
+      this.shadowRoot.appendChild(rendered)
     }
   }
 
